@@ -1,0 +1,6 @@
+web_app2
+venv
+.idea
+Scripts
+Lib
+pyvenv.cfg

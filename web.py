@@ -1,10 +1,10 @@
 import streamlit as st
 import functions as fn
-import time
-
-now = time.strftime("%b %d, %Y, %I:%M%p")
+import datetime
 
 todos = fn.get_todos()
+
+st.set_page_config(layout="wide")
 
 
 def add_todo():
@@ -14,8 +14,8 @@ def add_todo():
 
 
 st.title("My Todo App")
-st.subheader(now)
-st.write("Whatcha need to do homie? Type it down...")
+st.date_input("Current Date:")
+st.write("Whatcha need to do homie? <b>Type it down</b>...", unsafe_allow_html=True)
 
 for index, todo in enumerate(todos):
     checkbox = st.checkbox(f"{todo}", key=f"{todo}")
@@ -26,11 +26,6 @@ for index, todo in enumerate(todos):
         st.experimental_rerun()
 
 st.text_input(label="Add todo",
-
               placeholder="Add new todo...",
               on_change=add_todo,
               key="new_todo")
-
-# print("Hello")
-
-# st.session_state
